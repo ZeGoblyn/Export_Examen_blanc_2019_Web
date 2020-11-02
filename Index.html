@@ -1,0 +1,63 @@
+<!DOCTYPE html>	
+<html>
+
+<!-- Entête -->
+<head>
+	<meta charset="utf-8" lang="fr"/>
+	<title>Fomulaire JS</title>
+</head>
+
+<!--Contenu de le page-->
+<body>
+	<header>
+	
+	</header>
+	
+	<!-- Mise en place de la page  -->
+	<blockquote>
+		<table style="border : 1px solid;">
+		<tr><td>Couleur de fond<td><input type = "range" max = 255 min = 0 id="backgroundColor"> <td rowspan = 10 id="zone"><h3>Zone de test</h3>
+			<tr><td>Padding<td><input type = "range" max = 30 min = 0 id="padding">
+			<tr><td>Height<td><input type = "range" max = 500 min = 0 id="height">
+			<tr><td>Width<td><input type = "range" max = 200 min = 0 id="width">
+			<tr><td>Arrondi<td><input type = "range" max = 60 min = 0 id="border-radius">
+			<tr><td>Rotation<td><input type = "range" max = 180 min = 0 id="rotation">
+		</table>
+<script>
+let inputs = document.getElementsByTagName("input");
+for(let i = 0; inputs.length; i++)
+	inputs[i].addEventListener("change", changerZoneTest);
+
+function changerZoneTest(event)
+{
+//BUT modification de la zone de texte avec les sliders
+	console.log(event);
+	let zone = document.getElementById("zone");
+	let id = event.srcElement.id;
+	let value = event.srcElement.value;
+	switch(id)
+	{
+		case ("rotation"):
+		zone.style.transform = "rotate("+value+"deg)";						//Changement de la rotation en degré
+		break;
+		case ("backgroundColor"):
+		zone.style.backgroundColor = "rgb("+value+","+value+","+value+")"; 	//Changement de la couleur de fond
+		break;
+		
+		default:
+		zone.style.setProperty(id, value + "px");
+		break;
+	}
+	
+}
+</script>
+		
+	
+	</blockquote>
+	
+	<!-- Pas de la page  -->
+	<footer>
+	
+	</footer>
+</body>
+</html>
